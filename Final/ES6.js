@@ -466,6 +466,7 @@ listCorrectedSubcategorySales()
 Write it to the console.
 */
 
+
 function listCorrectedSubcategorySales()
 {
 	var print = [];
@@ -488,13 +489,26 @@ function listCorrectedSubcategorySales()
 
 		if(counter < 1)
 		{
+			
 			temp = [];
-			temp = {"Product": +ProductDetail[i].product +" | Category: "+ ProductDetail[i].category +" | Subcategory: "+ProductDetail[i].subcategory +" | sales:" +ProductDetail[i].sales +" | Total:1"};
+			//temp = {"Product": +ProductDetail[i].product +" | Category: "+ ProductDetail[i].category +" | Subcategory: "+ProductDetail[i].subcategory +" | sales:" +ProductDetail[i].sales +" | Total:1"};
 
-			console.log(temp);
+			temp = {product: ProductDetail[i].product, category: ProductDetail[i].category, subcategory: ProductDetail[i].subcategory, sales: ProductDetail[i].sales, Total:1};
+
+			print.push(temp);
+			
 		}
 	}
+
+	var SubcatSales = print.map(function(x)
+	{
+		if(x.Total > 1)
+		{
+			return x.product + x.category + x.subcategory + x.sales;
+		}
+	});
 	
+	console.log(SubcatSales);
 }
 
 
