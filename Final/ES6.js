@@ -90,10 +90,10 @@ function listProductTotalsByCategory()
 	var print = [];
 	for(let i = 0; i < productDetail.length; i++)
 	{
-		var counter;
+		var counter = 0;
 		for(let j = 0; j < print.length; j++)
 		{
-			if(print[j].category.includes(productDetail[i].category))
+			if(print[j].category === productDetail[i].category)
 			{
 				print[j].Total++;//increments amount of total each time it finds a match
 				counter++;
@@ -104,11 +104,11 @@ function listProductTotalsByCategory()
 			var temp = [];
 				temp = {
 						category: productDetail[i].category,
-						"Total" : 1+1};
+						Total : 1};
 
 			print.push(temp);
 		}
-		counter = 0;
+	
 	}
 	for(let i = 0; i <print.length; i++)
 	{
