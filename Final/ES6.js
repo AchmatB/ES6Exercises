@@ -34,54 +34,48 @@ function returnProductSummaryArray()
 	var productSummary = document.getElementsByTagName('table')[0];
 	var productSummaryRow = productSummary.getElementsByTagName('tr');
 	
-	var array=[];
-
-	for(let i = 1; i < productSummaryRow.length; i++) //begin at 1 because 0 returns the headers
-	{
-		var temp = [];
-
-		temp = {
-				category: 	productSummaryRow[i].children[0].innerHTML,
-				subcategory:productSummaryRow[i].children[1].innerHTML,
-				sales: 		parseFloat(productSummaryRow[i].children[2].innerHTML)//used parseFloat to account for decimal values
-				};
-
-		array.push(temp);//inserts temp into the array
-	}
+	//converts object to array, as .map only works with arrays
+	var productSummarArray = Array.from(productSummaryRow);
+	
+	var array = productSummarArray.map(x =>(	
+		{
+		category: x.children[0].innerHTML,
+		subcategory: x.children[1].innerHTML,
+		sales: parseFloat(x.children[2].innerHTML)//used parseFloat to account for decimal values
+	}));
+	// var array = productSummarArray.map(function(x)
+	// {
+	// 	category = x.children[0].innerText;
+	// 	subcategory = x.children[1].innerText;
+	// 	sales = parseFloat(x.children[2].innerText)//used parseFloat to account for decimal values
+	// });
 	
 	return array
 	
 }
 
-function returnProductDetailArray()
-{
-	//Gets the product detail table by index 1(which is the second table)
-	var productDetail = document.getElementsByTagName('table')[1];
-	var productDetailRow = productDetail.getElementsByTagName('tr');
+ function returnProductDetailArray() 
+ {
+ 	//Gets the product detail table by index 1(which is the second table)
+ 	var productDetail = document.getElementsByTagName('table')[1];
+ 	var productDetailRow = productDetail.getElementsByTagName('tr');
 
-	var array=[];
-
-	for(let i = 1; i < productDetailRow.length; i++)//begin at 1 because 0 returns the headers
+	var productDetailArray = Array.from(productDetailRow);
+	
+	var array = productDetailArray.map(x =>(	
 	{
-		var temp = [];
-
-		temp = {
-				product: 	productDetailRow[i].children[0].innerHTML,
-				category: 	productDetailRow[i].children[1].innerHTML,
-				subcategory:productDetailRow[i].children[2].innerHTML,
-				price: 		parseFloat(productDetailRow[i].children[3].innerHTML),//used parseFloat to account for decimal values
-				stock: 		parseFloat(productDetailRow[i].children[4].innerHTML),
-				sales: 		parseFloat(productDetailRow[i].children[5].innerHTML),
-				profit:		parseFloat(productDetailRow[i].children[6].innerHTML),
-				dateAdded: 	productDetailRow[i].children[7].innerHTML
-				};
- 
-	array.push(temp);//inserts temp into the array
-
-	}
+		product: 	x.children[0].innerHTML,
+		category: 	x.children[1].innerHTML,
+		subcategory:x.children[2].innerHTML,
+		price: 		parseFloat(x.children[3].innerHTML),//used parseFloat to account for decimal values
+		stock: 		parseFloat(x.children[4].innerHTML),
+		sales: 		parseFloat(x.children[5].innerHTML),
+		profit:		parseFloat(x.children[6].innerHTML),
+		dateAdded: 	x.children[7].innerHTML	
+	}));
 	
 	return array
-}
+ }
 
 
 function listProductTotalsByCategory()
