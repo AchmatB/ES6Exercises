@@ -1,0 +1,32 @@
+{
+  "name": "typescript-exercises",
+  "version": "1.0.0",
+  "description": "TypeScript Exercises",
+  "main": "index.ts",
+  "scripts": {
+    "build": "webpack --watch",
+    "test": "tsc && jasmine",
+    "start": "http-server -c-1"
+  },
+  "author": "Morne Fourie",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jasmine": "^2.6.0",
+    "@types/node": "^8.0.34",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "http-server": "^0.10.0",
+    "jasmine": "^2.8.0",
+    "jasmine-console-reporter": "^2.0.1",
+    "jasmine-core": "^2.8.0",
+    "jasmine-ts": "^0.2.1",
+    "ts-loader": "^3.0.5",
+    "tslint": "^5.7.0",
+    "tslint-loader": "^3.5.3",
+    "typescript": "^2.5.2",
+    "webpack": "^3.6.0"
+  }
+}
