@@ -12,12 +12,10 @@ import * as PA from "../ProductAggregator"
 describe("Products", function(): any  {
   it("summary should not be empty", function(): any {
     let result : IProductSummaryLine[] = ObjectMothers.productSummaryData;
- 
     expect(result.length).toBe(19);
   });
   it("detail should not be empty", function(): any {
     let result : IProductDetailLine[] = ObjectMothers.productData;
-  
     expect(result.length).toBe(100);
   });
 });
@@ -26,16 +24,9 @@ describe("Products", function(): any  {
 describe("ProductInspector", function(): any  {
   it("summary should not be empty", function(): any {
     let data : IProductDetailLine[] = ObjectMothers.productData;
-    let result : IProductTotal[] = PA.ProductAggregator.listProductTotalsBySubcategory(data, "DIY", "Electrical");
- 
+    let result : IProductTotal[] = PA.ProductAggregator.listProductTotalsBySubcategory(data, "DIY");
+
     expect(result.length).toBeGreaterThan(0);
-    // Add more test criteria 
-  });
-    it("summary should not be empty", function(): any {
-      let data : IProductDetailLine[] = ObjectMothers.productData;
-      let result : IProductTotal[] = PA.ProductAggregator.listTotalSalesByCategory(data, "DIY");
-   
-      expect(result.length).toBeGreaterThan(0);
-      // Add more test criteria 
+    // Add more test criteria
   });
 });
