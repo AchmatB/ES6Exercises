@@ -9,24 +9,39 @@ import * as PI from "../ProductInspector"
 import * as PA from "../ProductAggregator"
 
 // Examples
-describe("Products", function(): any  {
-  it("summary should not be empty", function(): any {
+describe("Products", function(): any  
+{
+  it("summary should not be empty", function(): any 
+  {
     let result : IProductSummaryLine[] = ObjectMothers.productSummaryData;
+ 
     expect(result.length).toBe(19);
   });
-  it("detail should not be empty", function(): any {
+  it("detail should not be empty", function(): any 
+  {
     let result : IProductDetailLine[] = ObjectMothers.productData;
+  
     expect(result.length).toBe(100);
   });
 });
 
 // Your tests
-describe("ProductInspector", function(): any  {
-  it("summary should not be empty", function(): any {
+describe("ProductInspector", function(): any  
+{
+  it("list product totals by subcategory should not be empty", function(): any 
+  {
     let data : IProductDetailLine[] = ObjectMothers.productData;
-    let result : IProductTotal[] = PA.ProductAggregator.listProductTotalsBySubcategory(data, "DIY");
-
+    let result : IProductTotal[] = PA.ProductAggregator.listProductTotalsBySubcategory(data, "DIY", "Electrical");
+ 
     expect(result.length).toBeGreaterThan(0);
-    // Add more test criteria
+    // Add more test criteria 
+  });
+    it("list product totals by category should not be empty", function(): any 
+   {
+      let data : IProductDetailLine[] = ObjectMothers.productData;
+      let result : IProductTotal[] = PA.ProductAggregator2.listTotalSalesByCategory(data, "DIY");
+   
+      expect(result.length).toBeGreaterThan(0);
+      // Add more test criteria 
   });
 });

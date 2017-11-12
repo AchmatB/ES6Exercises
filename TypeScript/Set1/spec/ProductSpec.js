@@ -15,11 +15,17 @@ describe("Products", function () {
 });
 // Your tests
 describe("ProductInspector", function () {
-    it("summary should not be empty", function () {
+    it("list product totals by subcategory should not be empty", function () {
         let data = ObjectMothers.productData;
-        let result = PA.ProductAggregator.listProductTotalsBySubcategory(data, "DIY");
+        let result = PA.ProductAggregator.listProductTotalsBySubcategory(data, "DIY", "Electrical");
         expect(result.length).toBeGreaterThan(0);
-        // Add more test criteria
+        // Add more test criteria 
+    });
+    it("list product totals by category should not be empty", function () {
+        let data = ObjectMothers.productData;
+        let result = PA.ProductAggregator2.listTotalSalesByCategory(data, "DIY");
+        expect(result.length).toBeGreaterThan(0);
+        // Add more test criteria 
     });
 });
 //# sourceMappingURL=ProductSpec.js.map
