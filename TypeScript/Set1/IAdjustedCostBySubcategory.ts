@@ -1,4 +1,4 @@
-export interface IExercise5 {
+export interface IAdjustedCostBySubcategory {
     category: string, 
     subcategory : string, 
     costOfStock : number, 

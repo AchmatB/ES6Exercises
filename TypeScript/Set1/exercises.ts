@@ -24,7 +24,9 @@ tableToProductSummary("summary")
 import { IProductSummaryLine } from "./IProductSummaryLine";
 
 export class Exercise1 {
-    public static tableToProductSummary(productSummaryId : string): IProductSummaryLine[] {
+	public static tableToProductSummary(productSummaryId : string)
+	
+	: IProductSummaryLine[] {
 		let table: HTMLTableElement = <HTMLTableElement> document.getElementById(productSummaryId);
 		let rows: Array<HTMLTableRowElement> = Array.from(table.tBodies[0].rows);
 
@@ -51,7 +53,9 @@ tableToProductDetail("detail")
 import { IProductDetailLine } from "./IProductDetailLine";
 
 export class Exercise2 {
-    public static tableToProductDetail(productDetailId : string): IProductDetailLine[] {
+	public static tableToProductDetail(productDetailId : string)
+	
+	: IProductDetailLine[] {
 		let table: HTMLTableElement = <HTMLTableElement> document.getElementById(productDetailId);
 		let rows: Array<HTMLTableRowElement> = Array.from(table.tBodies[0].rows);
 
