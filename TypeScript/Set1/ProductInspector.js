@@ -52,10 +52,30 @@ class ProductInspector {
                     profit: productDetails[i].profit,
                     dateAdded: productDetails[i].dateAdded
                 };
-                console.log("mapped - " + JSON.stringify(rows));
             }
         }
-        console.log("mapped but not - " + JSON.stringify(rows));
+        return rows;
+    }
+    static countProductDuplicates(data) {
+        let rows;
+        let print = data;
+        var matchCounter = 0;
+        for (let i = 0; i < data.length; i++) {
+            for (let j = 0; j < print.length; j++) {
+                //console.log("printer - "+ JSON.stringify(print));
+                if (print[j].product.includes(data[i].product)) {
+                    matchCounter++;
+                }
+            }
+            if (matchCounter > 1) {
+                let rows = {
+                    product: data[i],
+                    duplicateCount: matchCounter
+                };
+                console.log("dupicates: " + JSON.stringify(rows));
+            }
+            matchCounter = 0;
+        }
         return rows;
     }
 }

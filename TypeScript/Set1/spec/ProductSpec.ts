@@ -8,6 +8,7 @@ import * as ObjectMothers from "./ObjectMothers"
 
 import * as PI from "../ProductInspector"
 import * as PA from "../ProductAggregator"
+import { ICountDuplicate } from "../IDuplicateCount";
 
 // Examples
 describe("Products", function(): any  
@@ -60,7 +61,18 @@ describe("ProductInspector", function(): any
     let productDetails : IProductDetailLine[] = ObjectMothers.productData;
     
     let result : IProductDetailLine [] = PI.ProductInspector.listMissingProductLines(productDetails, productSummary);
-    console.log("listMissingProductLines -" +JSON.stringify(result));
+  
+    expect(result.length).toBeGreaterThan(0);
+    // Add more test criteria 
+  });
+
+  it("Count duplicates", function(): any 
+  {
+  
+    let productDetails : IProductDetailLine[] = ObjectMothers.productData;
+    
+    let result : ICountDuplicate [] = PI.ProductInspector.countProductDuplicates(productDetails);
+    console.log("dups -" +JSON.stringify(result));
     expect(result.length).toBeGreaterThan(0);
     // Add more test criteria 
   });

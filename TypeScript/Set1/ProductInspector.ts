@@ -2,7 +2,7 @@
 import { IProductDetailLine } from "./IProductDetailLine";
 import { IProductSummaryLine } from "./IProductSummaryLine";
 import { IAdjustedCostBySubcategory } from "./IAdjustedCostBySubcategory";
-
+import { ICountDuplicate } from "./IDuplicateCount";
 
 export class ProductInspector {
     // Your Exercise 5-9 code here
@@ -86,5 +86,37 @@ export class ProductInspector {
            
             return rows;   
         }
+
+        public static countProductDuplicates(data : IProductDetailLine[]) : ICountDuplicate[]
+        {
+
+            let rows;
+            let dataSet2 = data;
+            var matchCounter = 0;
+            for(let i = 0; i < data.length; i++)
+            {
+                for(let j = 0; j < dataSet2.length; j++)
+                {
+                    //console.log("printer - "+ JSON.stringify(print));
+                    if(dataSet2[j].product.includes(data[i].product))
+                    {
+                        matchCounter++;
+                    }
+                }
+                if(matchCounter > 1)
+                {
+                   
+                   let rows = { 
+                        product: data[i],
+                        duplicateCount : matchCounter
+                    };
+                  // console.log("dupicates: "+ JSON.stringify(rows));
+                    
+                }
+                matchCounter = 0;
+            }
+            
+            return rows;
+        }                
      
     }
