@@ -44,7 +44,6 @@ describe("ProductInspector", function () {
     it("Count duplicates", function () {
         let productDetails = ObjectMothers.productData;
         let result = PI.ProductInspector.countProductDuplicates(productDetails);
-        console.log("dups -" + JSON.stringify(result));
         expect(result.length).toBeGreaterThan(0);
         // Add more test criteria 
     });

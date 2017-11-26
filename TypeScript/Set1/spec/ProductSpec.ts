@@ -72,7 +72,7 @@ describe("ProductInspector", function(): any
     let productDetails : IProductDetailLine[] = ObjectMothers.productData;
     
     let result : ICountDuplicate [] = PI.ProductInspector.countProductDuplicates(productDetails);
-    console.log("dups -" +JSON.stringify(result));
+ 
     expect(result.length).toBeGreaterThan(0);
     // Add more test criteria 
   });

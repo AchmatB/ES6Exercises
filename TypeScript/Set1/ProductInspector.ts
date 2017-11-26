@@ -48,8 +48,8 @@ export class ProductInspector {
 
     public static listMissingProductLines(productDetails: IProductDetailLine[], productSummary: IProductSummaryLine[]) :IProductDetailLine[]
     {
-        var temp;
-        let rows;
+        
+        let result;
         for(let i = 0; i < productDetails.length; i++)
         {
             var matchCounter = 0;
@@ -68,8 +68,7 @@ export class ProductInspector {
             if(matchCounter < 1)
             {
                 
-                //look into how to add more, as += does not work
-                rows = { 
+                result += { 
                     
                 product: productDetails[i].product,
                 category: productDetails[i].category,
@@ -84,39 +83,36 @@ export class ProductInspector {
                 }
             }  
            
-            return rows;   
+            return result;   
         }
 
         public static countProductDuplicates(data : IProductDetailLine[]) : ICountDuplicate[]
         {
 
-            let rows;
-            let dataSet2 = data;
-            var matchCounter = 0;
+            let result;
+            let copyOfData = data;
+            let matchCounter = 0;
             for(let i = 0; i < data.length; i++)
             {
-                for(let j = 0; j < dataSet2.length; j++)
+                for(let j = 0; j < copyOfData.length; j++)
                 {
-                    //console.log("printer - "+ JSON.stringify(print));
-                    if(dataSet2[j].product.includes(data[i].product))
+                    if(copyOfData[j].product.includes(data[i].product))
                     {
                         matchCounter++;
                     }
                 }
                 if(matchCounter > 1)
                 {
-                   
-                   let rows = { 
-                        product: data[i],
+    
+                    result += { 
+                        product: data[i].product,
                         duplicateCount : matchCounter
                     };
-                  // console.log("dupicates: "+ JSON.stringify(rows));
-                    
                 }
                 matchCounter = 0;
             }
-            
-            return rows;
+            //console.log("dupicates: "+ JSON.stringify(rows));
+            return result;
         }                
      
     }

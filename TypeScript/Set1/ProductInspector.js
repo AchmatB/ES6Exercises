@@ -29,8 +29,7 @@ class ProductInspector {
         return result;
     }
     static listMissingProductLines(productDetails, productSummary) {
-        var temp;
-        let rows;
+        let result;
         for (let i = 0; i < productDetails.length; i++) {
             var matchCounter = 0;
             for (let j = 0; j < productSummary.length; j++) {
@@ -42,8 +41,7 @@ class ProductInspector {
                 }
             }
             if (matchCounter < 1) {
-                //look into how to add more, as += does not work
-                rows = {
+                result += {
                     product: productDetails[i].product,
                     category: productDetails[i].category,
                     subcategory: productDetails[i].subCategory,
@@ -54,29 +52,28 @@ class ProductInspector {
                 };
             }
         }
-        return rows;
+        return result;
     }
     static countProductDuplicates(data) {
-        let rows;
-        let print = data;
-        var matchCounter = 0;
+        let result;
+        let copyOfData = data;
+        let matchCounter = 0;
         for (let i = 0; i < data.length; i++) {
-            for (let j = 0; j < print.length; j++) {
-                //console.log("printer - "+ JSON.stringify(print));
-                if (print[j].product.includes(data[i].product)) {
+            for (let j = 0; j < copyOfData.length; j++) {
+                if (copyOfData[j].product.includes(data[i].product)) {
                     matchCounter++;
                 }
             }
             if (matchCounter > 1) {
-                let rows = {
-                    product: data[i],
+                result += {
+                    product: data[i].product,
                     duplicateCount: matchCounter
                 };
-                console.log("dupicates: " + JSON.stringify(rows));
             }
             matchCounter = 0;
         }
-        return rows;
+        //console.log("dupicates: "+ JSON.stringify(rows));
+        return result;
     }
 }
 exports.ProductInspector = ProductInspector;
