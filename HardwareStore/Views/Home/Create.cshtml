@@ -1,0 +1,17 @@
+﻿@using HardwareStore.Models
+@model Product
+
+<h1>Create</h1>
+
+<form method="post">
+
+    <div>  
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    
+    <!-- TODO: Add fields for Category, Subcategory and UnitPrice -->
+
+    <input type="submit" name="save" value="Save" />
+</form>
