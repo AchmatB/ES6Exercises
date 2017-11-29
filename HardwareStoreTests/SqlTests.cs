@@ -1,7 +1,5 @@
 using System.Linq;
-using System.Threading;
 using HardwareStore.Data;
-using HardwareStore.Models;
 using HardwareStore.Services;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
