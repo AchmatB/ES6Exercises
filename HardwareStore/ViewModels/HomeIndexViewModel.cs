@@ -6,7 +6,7 @@ namespace HardwareStore.ViewModels
     public class HomeIndexViewModel
     {
         public IEnumerable<Product> Products { get; set; }
-        public IEnumerable<ProductSummary> ProductSummaries { get; set; }
+        public IEnumerable<ProductSummary> ProductSummary { get; set; }
         public string CurrentMessage { get; set; }
     }
 }

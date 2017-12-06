@@ -12,6 +12,6 @@ namespace HardwareStore.Data
         }
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductSummary> ProductSummaries { get; set; }
+        public DbSet<ProductSummary> ProductSummary { get; set; }
     }
 }
