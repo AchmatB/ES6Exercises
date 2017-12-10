@@ -28,6 +28,7 @@ namespace HardwareStore
             services.AddDbContext<ProductDbContext>(
                 options => options.UseSqlServer(_configuration.GetConnectionString("HardwareStore")));
             services.AddScoped<ISummaryService, SqlSummaryService>();
+            services.AddScoped<IProductService, SqlProductService>();
             services.AddMvc();
         }
 

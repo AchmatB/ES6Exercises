@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Products</title>
+    <title>Product Summary</title>
 </head>
 <body>
     <h1>@Model.CurrentMessage</h1>
@@ -25,14 +25,55 @@
                 <td>@product.Category</td>
                 <td>@product.Subcategory</td>
                 <td>@product.UnitsSold</td>
-
-                <td>
-                    <a asp-action="Details" asp-route-id="@product.Id">Details</a>
-                </td>
             </tr>
         }
     </table>    
 
     <a asp-action="Create">Add Product</a>
 </body>
+
+<head>
+    <title>Products</title>
+</head>
+<body>
+   
+    <table>
+        <thead>
+    <tr>
+        <th>ID</th>
+        <th>Product Name</th>
+        <th>Category</th>
+        <th>Subcategory</th>
+        <th>Unit Price</th>
+        <th>UnitsInStock</th>
+        <th>UnitsSold</th>
+        <th>ProfitYtd</th>
+        <th>DateAdded</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+@foreach (var product in Model.Products)
+{
+    <tr>
+        <td>@product.Id</td>
+        <td>@product.Name</td>
+        <td>@product.Category</td>
+        <td>@product.Subcategory</td>
+        <td>@product.UnitPrice</td>
+        <td>@product.UnitsInStock</td>
+        <td>@product.UnitsSold</td>
+        <td>@product.ProfitYtd</td>
+        <td>@product.DateAdded</td>
+
+        <td>
+            <a asp-action="Details" asp-route-id="@product.Id">Details</a>
+        </td>
+    </tr>
+
+}
+    </table>
+
+    <a asp-action="Create">Add Product</a>
+</body>
+
 </html>

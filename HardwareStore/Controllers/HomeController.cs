@@ -7,12 +7,15 @@ namespace HardwareStore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ISummaryService _productService;
+        private readonly ISummaryService _summaryService;
+        private readonly IProductService _productService;
         private readonly IGreeter _greeter;
 
-        public HomeController(ISummaryService productService,
+        public HomeController(ISummaryService summaryService,
+                              IProductService productService,
                               IGreeter greeter)
         {
+            _summaryService = summaryService;
             _productService = productService;
             _greeter = greeter;
         }
@@ -20,7 +23,8 @@ namespace HardwareStore.Controllers
         public IActionResult Index()
         {
             var model = new HomeIndexViewModel();
-            model.ProductSummary = _productService.GetAll();
+            model.ProductSummary = _summaryService.GetAll();
+            model.Products = _productService.GetAll();
             model.CurrentMessage = _greeter.GetMessageOfTheDay();
 
             return View(model);
@@ -28,8 +32,14 @@ namespace HardwareStore.Controllers
 
         public IActionResult Details(int id)
         {
-            var model = _productService.Get(id);
+            var model = _summaryService.Get(id);
+            var productModel = _productService.Get(id);
             if (model == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            if (productModel == null)
             {
                 return RedirectToAction(nameof(Index));
             }

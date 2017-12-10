@@ -9,4 +9,6 @@ namespace HardwareStore.Services
         ProductSummary Get(int id);
         ProductSummary Add(ProductSummary restaurant);
     }
+   
+
 }
