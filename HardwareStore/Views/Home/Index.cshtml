@@ -2,8 +2,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
+
+<div>
 <head>
+
+    <link href="~/Views/Home/StyleSheet.css" rel="stylesheet" />
     <title>Product Summary</title>
+
 </head>
 <body>
     <h1>@Model.CurrentMessage</h1>
@@ -18,22 +23,22 @@
 
             </tr>
         </thead>
-        @foreach (var product in Model.ProductSummary)
+        @foreach (var productSum in Model.ProductSummary)
         {
             <tr>
-                <td>@product.Id</td>
-                <td>@product.Category</td>
-                <td>@product.Subcategory</td>
-                <td>@product.UnitsSold</td>
+                <td>@productSum.Id</td>
+                <td>@productSum.Category</td>
+                <td>@productSum.Subcategory</td>
+                <td>@productSum.UnitsSold</td>
             </tr>
         }
     </table>    
 
-    <a asp-action="Create">Add Product</a>
 </body>
-
+    </div>
+<div>
 <head>
-    <title>Products</title>
+    <h1>Products</h1>
 </head>
 <body>
    
@@ -75,5 +80,5 @@
 
     <a asp-action="Create">Add Product</a>
 </body>
-
+    </div>
 </html>

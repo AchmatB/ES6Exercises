@@ -28,7 +28,7 @@ namespace HardwareStore.Services
 
         public IEnumerable<Product> GetAll()
         {
-            return _context.Products.OrderBy(r => r.Name);
+            return _context.Products.OrderBy(r => r.Id);
         }
     }
 }
