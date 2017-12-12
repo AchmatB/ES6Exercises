@@ -43,7 +43,7 @@ namespace HardwareStore.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-            return View(model);
+            return View(productModel);
         }
 
         [HttpGet]
