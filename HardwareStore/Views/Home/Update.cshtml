@@ -1,0 +1,58 @@
+﻿@model HardwareStore.Models.Product
+
+
+<h1>@Model.Name</h1>
+<div>
+    Id: @Model.Id
+</div>
+<div>
+    Name: @Model.Name
+    <br>
+    Rename to:
+    <input type="text" name="Name" value=""><br>
+</div>
+<div>
+    Category: @Model.Category
+    <br>
+    Move to category:
+    <input type="text" name="Category" value=""><br>
+</div>
+<div>
+    Subcategory: @Model.Subcategory
+    <br>
+    Move to subcategory:
+    <input type="text" name="Subcategory" value=""><br>
+</div>
+<div>
+    Unit Price: @Model.UnitPrice
+    <br>
+    Update Unit Price to:
+    <input type="text" name="UnitPrice" value=""><br>
+</div>
+<div>
+    Units in Stock: @Model.UnitsInStock
+    <br>
+    Update Units in Stock to:
+    <input type="text" name="UnitsInStock" value=""><br>
+</div>
+<div>
+    Units Sold: @Model.UnitsSold
+    <br>
+    Update Units Sold to:
+    <input type="text" name="UnitsSold" value=""><br>
+</div>
+<div>
+    Profit: @Model.ProfitYtd
+    <br>
+    Update ProfitYtd to:
+    <input type="text" name="ProfitYtd" value=""><br>
+</div>
+<div>
+    Date Added: @Model.DateAdded
+    <br>
+    Update Date Added to:
+    <input type="text" name="DateAdded" value=""><br>
+</div>
+<!-- TODO: Add fields for Category, Subcategory, UnitPrice, UnitsInStock, UnitsSold, ProfitYtd, DateAdded -->
+<a asp-action="Update" asp-controller="Update">Update</a>
+<a asp-action="Index" asp-controller="Home">Home</a>

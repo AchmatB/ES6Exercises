@@ -32,18 +32,37 @@ namespace HardwareStore.Controllers
 
         public IActionResult Details(int id)
         {
-            var model = _summaryService.Get(id);
             var productModel = _productService.Get(id);
-            if (model == null)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-
+         
             if (productModel == null)
             {
                 return RedirectToAction(nameof(Index));
             }
             return View(productModel);
+        }
+
+        public IActionResult Update(int id)
+        {
+            var productModel = _productService.Get(id);
+
+            if (productModel == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            
+            return View(productModel);
+        }
+
+        [HttpPost]
+        public IActionResult Update(ProductEditModel model)
+        {
+            
+            if (ModelState.IsValid)
+            {
+            }
+
+            return View(model);
         }
 
         [HttpGet]
