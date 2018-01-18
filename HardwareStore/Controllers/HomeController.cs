@@ -41,29 +41,31 @@ namespace HardwareStore.Controllers
             return View(productModel);
         }
 
+       // [HttpPost]
         public IActionResult Update(int id)
         {
             var productModel = _productService.Get(id);
+    
 
             if (productModel == null)
             {
                 return RedirectToAction(nameof(Index));
             }
 
+            //productModel.Name = "Test";
+
+
             
             return View(productModel);
         }
 
-        [HttpPost]
-        public IActionResult Update(ProductEditModel model)
-        {
-            
-            if (ModelState.IsValid)
-            {
-            }
-
-            return View(model);
-        }
+       
+        //public IActionResult Update(ProductEditModel model)
+        //{
+      
+        
+        //    return View(model);
+        //}
 
         [HttpGet]
         public IActionResult Create()

@@ -21,6 +21,13 @@ namespace HardwareStore.Services
             return product;
         }
 
+        public Product Save(Product product)
+        {
+            _context.Products.Update(product);
+            _context.SaveChanges();
+            return product;
+        }
+
         public Product Get(int id)
         {
             return _context.Products.FirstOrDefault(r => r.Id == id);
