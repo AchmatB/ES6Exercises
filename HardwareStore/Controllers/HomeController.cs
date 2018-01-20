@@ -2,11 +2,16 @@
 using Microsoft.AspNetCore.Mvc;
 using HardwareStore.Services;
 using HardwareStore.ViewModels;
+using HardwareStore.Data;
+using HardwareStore.Views.Home.Details;
+using System;
 
 namespace HardwareStore.Controllers
 {
     public class HomeController : Controller
     {
+
+        private readonly ProductDbContext _updateContext;
         private readonly ISummaryService _summaryService;
         private readonly IProductService _productService;
         private readonly IGreeter _greeter;
@@ -38,13 +43,17 @@ namespace HardwareStore.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
+            
             return View(productModel);
         }
 
-       // [HttpPost]
-        public IActionResult Update(int id)
+       [HttpPost]
+        public IActionResult Update(ProductEditModel id)
         {
-            var productModel = _productService.Get(id);
+
+            string test = Convert.ToString(Request["txtAmount"].ToString());
+
+            var productModel = _context.Products.FirstOrDefault(r => r.Id == id);
     
 
             if (productModel == null)
@@ -52,8 +61,8 @@ namespace HardwareStore.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            //productModel.Name = "Test";
-
+            productModel.Name = "Test";
+            
 
             
             return View(productModel);

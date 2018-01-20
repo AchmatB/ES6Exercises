@@ -2,7 +2,8 @@
 
 
 <h1>@Model.Name</h1>
-
+@using (Html.BeginForm("Insert", "HomeController", FormMethod.Post))
+{
 <div>
     Id: @Model.Id
 </div>
@@ -16,6 +17,8 @@
     Category: @Model.Category
     <br>
     Move to category:
+    @Html.TextBoxFor(Model => Model.Category)
+    @Html.ValidationMessageFor(Model => Model.Category)
     <input type="text" name="Category" value=""><br>
 </div>
 <div>
@@ -54,6 +57,7 @@
     Update Date Added to:
     <input type="text" name="DateAdded" value=""><br>
 </div>
+}
 <!-- TODO: Add fields for Category, Subcategory, UnitPrice, UnitsInStock, UnitsSold, ProfitYtd, DateAdded -->
 <a asp-action="Update" asp-route-id="@Model.Id">Update</a>
 <a asp-action="Index" asp-controller="Home">Home</a>
